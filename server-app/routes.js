@@ -43,4 +43,7 @@ const requestHandler = (req, res) => {
     res.end();
 }
 
-module.exports = requestHandler;
+module.exports = {
+    handler: requestHandler,
+    someText: 'Some hard coded text'
+};
