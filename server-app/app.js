@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
 
     if (url === '/'){
         res.write('<html>');
-        res.write('<head><title>Enter Message:</title></head>');
+        res.write('<head><title>Enter Message</title></head>');
         res.write('<body>');
         res.write('<form action="/message" method="POST">');
         res.write('<input type="text" name="message">');
