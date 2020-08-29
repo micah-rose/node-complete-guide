@@ -1,5 +1,5 @@
 const http = require('http');
 
-const server = http.createServer(routes.handler);
+const server = http.createServer();
 
 server.listen(3002);
