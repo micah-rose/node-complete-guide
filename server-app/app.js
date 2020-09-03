@@ -13,6 +13,4 @@ app.use((req, res, next) => {
     res.send('<h1>Hello from Express!!</h1>'); //allows us to send a response and attach a body
 });
 
-const server = http.createServer(app);
-
-server.listen(3002);
+app.listen(3002);
