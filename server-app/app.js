@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 //app.use([path,] callback [, path])
-app.usee(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded());
 
 app.use('/', (req, res, next) => {
     console.log('This always runs!');
