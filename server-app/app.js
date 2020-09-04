@@ -13,6 +13,11 @@ app.use('/add-product', (req, res, next) => {
     res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'); //allows us to send a response and attach a body
 });
 
+app.use('/product', (req, res, next) => {
+    console.log(req.body);
+    res.redirect('/');
+})
+
 app.use('/', (req, res, next) => {
     console.log('In another middleware');
     res.send('<h1>Hello from Express!!</h1>'); //allows us to send a response and attach a body
