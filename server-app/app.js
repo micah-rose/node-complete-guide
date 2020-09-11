@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-//app.use([path,] callback [, path])
 app.use(bodyParser.urlencoded());
 
 app.use('/', (req, res, next) => {
@@ -13,7 +12,7 @@ app.use('/', (req, res, next) => {
 
 app.use('/add-product', (req, res, next) => {
     console.log('In another middleware');
-    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'); //allows us to send a response and attach a body
+    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'); 
 });
 
 app.post('/product', (req, res, next) => {
@@ -23,7 +22,7 @@ app.post('/product', (req, res, next) => {
 
 app.use('/', (req, res, next) => {
     console.log('In another middleware');
-    res.send('<h1>Hello from Express!!</h1>'); //allows us to send a response and attach a body
+    res.send('<h1>Hello from Express!!</h1>'); 
 });
 
 app.listen(3002);
