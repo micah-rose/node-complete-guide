@@ -5,11 +5,6 @@ const rootDir = require('../util/path');
 
 const products = [];
 
-router.use('/', (req, res, next) => {
-    console.log('This always runs!');
-    next();
-})
-
 router.get('/add-product', (req, res, next) => {
     res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
  
