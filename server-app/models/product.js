@@ -13,7 +13,11 @@ module.exports = class Product {
             'products.json'
         );
         fs.readFile(p, (err, fileContent) => {
-            console.log(fileContent);
+            let products = [];
+            if (!err) {
+                products = JSON.parse(fileContent);
+            }
+            products.push(this);
         });
     }
 
