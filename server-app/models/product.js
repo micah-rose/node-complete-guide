@@ -2,7 +2,7 @@ const products = [];
 
 module.exports = class Product {
     constructor(title) {
-        this.title - title;
+        this.title = title;
     }
 
     save() {
@@ -10,6 +10,6 @@ module.exports = class Product {
     }
 
     static fetchAll() {
-        return this.products;
+        return products;
     }
 }
