@@ -18,6 +18,7 @@ module.exports = class Product {
                 products = JSON.parse(fileContent);
             }
             products.push(this);
+            fs.writeFile(p, JSON.stringify(products));
         });
     }
 
