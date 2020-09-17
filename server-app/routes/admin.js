@@ -6,10 +6,7 @@ const products = [];
 
 router.get('/add-product', productsController.getAddProduct);
 
-router.post('/add-product', (req, res, next) => {
-    products.push({ title: req.body.title });
-    res.redirect('/');
-})
+router.post('/add-product', productsController.postAddProduct)
 
 exports.routes = router;
 exports.products = products;

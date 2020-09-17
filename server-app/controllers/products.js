@@ -4,3 +4,8 @@ exports.getAddProduct = (req, res, next) => {
         path: '/admin/add-product', 
         activeAddProduct: true})
 }
+
+exports.postAddProduct = (req, res, next) => {
+    products.push({ title: req.body.title });
+    res.redirect('/');
+}
