@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
 body {
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 main {
     padding: 1rem;
+    margin: auto;
+}
+
+form {
+    display: inline;
 }
 
 .main-header {
@@ -13,11 +20,13 @@ main {
     height: 3.5rem;
     background-color: goldenrod;
     padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
 }
 
 .main-header__nav {
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
 }
 
@@ -44,10 +53,109 @@ main {
     color: indigo
 }
 
+.mobile-nav {
+    width: 30rem;
+    height: 100vh;
+    max-width: 90%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: white;
+    z-index: 10;
+    padding: 2rem 1rem 1rem 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+  }
+
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+  
+  .mobile-nav__item-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .mobile-nav__item {
+    margin: 1rem;
+    padding: 0;
+  }
+  
+  .mobile-nav__item a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    padding: 0.5rem 2rem;
+  }
+  
+  .mobile-nav__item a:active,
+  .mobile-nav__item a:hover,
+  .mobile-nav__item a.active {
+    background: #00695c;
+    color: white;
+    border-radius: 3px;
+  }
+  
+  #side-menu-toggle {
+    border: 1px solid white;
+    font: inherit;
+    padding: 0.5rem;
+    display: block;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #side-menu-toggle:focus {
+    outline: none;
+  }
+  
+  #side-menu-toggle:active,
+  #side-menu-toggle:hover {
+    color: #ffeb3b;
+    border-color: #ffeb3b;
+  }
+  
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    display: none;
+  }
+
 .product-form {
     width: 20rem;
     max-width: 90%;
     margin: auto;
+    display: block;
+}
+
+.product-item {
+    width: 20rem;
+    max-width: 95%;
+    margin: 1rem;
+}
+
+.product__title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.product__price {
+    text-align: center;
+    color: #4d4d4d;
+    margin-bottom: 0.5rem;
+}
+
+.product__description {
+    text-align: center;
 }
 
 .form-control {
@@ -59,6 +167,7 @@ main {
 .form-control textarea {
     display: block;
     width: 100%;
+    margin-bottom: 0.25rem;
 }
 
 .form-control input,
@@ -71,21 +180,6 @@ main {
 .form-control input:focus,
 .form-control textarea:focus {
     outline-color: indigo;
-}
-
-button {
-    font: inherit;
-    border: 1px solid indigo;
-    color: indigo;
-    background: white;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-button:hover,
-button:active {
-    background-color: indigo;
-    color: white;
 }
 
 .grid {
@@ -142,4 +236,14 @@ button:active {
   .btn:active {
     background-color: indigo;
     color: white;
+  }
+
+@media (min-width: 768px) {
+    .main-header__nav {
+      display: flex;
+    }
+  
+    #side-menu-toggle {
+      display: none;
+    }
   }
