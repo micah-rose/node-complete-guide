@@ -4,10 +4,8 @@ exports.getProducts = (req, res, next) => {
     Product.fetchAll(products => {
         res.render('shop/shop', {
             prods: products, 
-            pageTitle: 'Shop', 
+            pageTitle: 'All Products', 
             path: '/shop', 
-            hasProducts: products.length > 0,
-            activeShop: true
         });
     }); 
 }
