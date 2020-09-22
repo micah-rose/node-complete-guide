@@ -16,7 +16,7 @@ module.exports = class Cart {
             }
 
             const existingProductIndex = cart.products.findIndex(
-                prod => prod.id === id); //Might have to change to ==
+                prod => prod.id === id);
             const existingProduct = cart.products[existingProductIndex];
             let updatedProduct;
             if (existingProduct){
