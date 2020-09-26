@@ -1,5 +1,4 @@
 const db = require('../util/database');
-
 const Cart = require('../models/cart');
   
   module.exports = class Product {
