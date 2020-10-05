@@ -4,7 +4,7 @@ const Cart = require('../models/cart');
 exports.getProducts = (req, res, next) => {
   Product.findAll()
   .then(products => {
-    res.render('shop/index', {
+    res.render('shop/shop', {
       prods: products,
       pageTitle: 'All Products',
       path: '/products'
