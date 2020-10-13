@@ -25,8 +25,19 @@ Product.belongsTo(User), {constraints: true, onDelete: 'CASCADE'};
 User.hasMany(Product);
 
 sequelize
-    .sync({force: true})
+    //.sync({force: true})
+    .sync()
     .then(result => {
+        return User.findByPk(1);
+    })
+    .then(user => {
+        if (!user){
+            return User.create({ name: 'Max', email: 'test@test.com' })
+        }
+        return user;
+    })
+    .then(user => {
+        console.log(user);
         app.listen(3002);
     })
     .catch(err => {
