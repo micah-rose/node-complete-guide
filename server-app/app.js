@@ -4,6 +4,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const path = require('path');
 const errorController = require('./controllers/error')
+const mongoConnect = require('./util/database');
 
 
 const app = express();
@@ -28,3 +29,7 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+mongoConnect((client) => {
+    console.log(client);
+    app.listen(3002);
+});
