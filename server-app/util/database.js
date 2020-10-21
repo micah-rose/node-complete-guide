@@ -7,7 +7,7 @@ const mongoConnect = (callback) => {
     MongoClient.connect(
         'mongodb+srv://user1:mongo@cluster1.orslq.mongodb.net/node_complete_guide?retryWrites=true&w=majority'
         )
-        .then(result => {
+        .then(client => {
             console.log('Connected');
             _db = client.db();
             callback();
