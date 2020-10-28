@@ -42,7 +42,8 @@ class User {
         );
     }
 
-    getCart(){
+    //Could eventually modify this to remove deleted items from the cart and refreshing.
+    getCart(){ 
         const db = getDb();
         const productIds = this.cart.items.map(i => {
             return i.productId;
