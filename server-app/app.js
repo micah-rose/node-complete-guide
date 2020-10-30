@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
+
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
-const path = require("path");
+
 const errorController = require("./controllers/error");
 const mongoose = require('mongoose');
 const User = require('./models/user');
