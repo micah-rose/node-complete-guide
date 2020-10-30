@@ -4,7 +4,7 @@ const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const path = require("path");
 const errorController = require("./controllers/error");
-const mongoConnect = require("./util/database").mongoConnect;
+const mongoose = require('mongoose');
 const User = require('./models/user');
 
 const app = express();
@@ -29,6 +29,12 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-mongoConnect(() => {
-  app.listen(3002);
-});
+mongoose.connect(
+  'mongodb+srv://user1:mongo@cluster1.orslq.mongodb.net/node_complete_guide?retryWrites=true&w=majority'
+  )
+  .then(result => {
+    app.listen(3002);
+  })
+  .catch(err => {
+    console.log(err);
+  });
