@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  User.findById('5fa8a4229d98ca2c1fd67e06')
+  User.findById('5fa8a559640b542d07458fca')
       .then(user => {
           req.user = new User(user.name, user.email, user.cart, user._id);
           next();
@@ -35,14 +35,18 @@ mongoose.connect(
   'mongodb+srv://user1:mongo@cluster1.orslq.mongodb.net/node_complete_guide?retryWrites=true&w=majority'
   )
   .then(result => {
-    const user = new User({
-      name: 'Max',
-      email: 'max@test.com',
-      cart: {
-        items: []
+    User.findOne().then(user => {
+      if (!user){
+        const user = new User({
+          name: 'Max',
+          email: 'max@test.com',
+          cart: {
+            items: []
+          }
+        })
+        user.save();
       }
     })
-    user.save();
     app.listen(3002);
   })
   .catch(err => {
