@@ -35,6 +35,14 @@ mongoose.connect(
   'mongodb+srv://user1:mongo@cluster1.orslq.mongodb.net/node_complete_guide?retryWrites=true&w=majority'
   )
   .then(result => {
+    const user = new User({
+      name: 'Max',
+      email: 'max@test.com',
+      cart: {
+        items: []
+      }
+    })
+    user.save();
     app.listen(3002);
   })
   .catch(err => {
