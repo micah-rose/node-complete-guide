@@ -34,7 +34,7 @@ userSchema.methods.addToCart = function(product) {
 
     if (cartProductIndex >= 0) {
         newQuantity = this.cart.items[cartProductIndex].quantity + 1;
-        updateCartItems[cartProductIndex].quantity = newQuantity;
+        updatedCartItems[cartProductIndex].quantity = newQuantity;
     } else {
         updatedCartItems.push({
             productId: product._id, 
