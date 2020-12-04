@@ -144,7 +144,7 @@ form {
     display: none;
   }
 
-.product-form {
+.product-form, .login-form {
     width: 20rem;
     max-width: 90%;
     margin: auto;
