@@ -4,7 +4,7 @@ exports.getLogin = (req, res, next) => {
   res.render("auth/login", {
     path: "/login",
     pageTitle: "Login",
-    isAuthenticated: false,
+    isAuthenticated: false
   });
 };
 
@@ -20,7 +20,7 @@ exports.postLogin = (req, res, next) => {
 
 exports.postLogout = (req, res, next) => {
   req.session.destroy((err) => {
-    res.redirect("/");
     console.log(err);
+    res.redirect("/");
   });
 };
