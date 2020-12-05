@@ -1,14 +1,14 @@
-const User = require('../models/user');
+const User = require("../models/user");
 
 exports.getLogin = (req, res, next) => {
-  res.render('auth/login', {
-    path: '/login',
-    pageTitle: 'Login',
-    isAuthenticated: false
+  res.render("auth/login", {
+    path: "/login",
+    pageTitle: "Login",
+    isAuthenticated: false,
   });
 };
 
-exports.postLogin = (req, res, next) => {   
+exports.postLogin = (req, res, next) => {
   User.findById("5fc9475ea278713c0cddca22")
     .then((user) => {
       req.session.isLoggedIn = true;
@@ -20,7 +20,7 @@ exports.postLogin = (req, res, next) => {
 
 exports.postLogout = (req, res, next) => {
   req.session.destroy((err) => {
-    res.redirect('/');
+    res.redirect("/");
     console.log(err);
   });
 };

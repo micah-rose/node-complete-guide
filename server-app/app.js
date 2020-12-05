@@ -1,19 +1,16 @@
+const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
-const path = require("path");
+const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 
-const adminRoutes = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
-const authRoutes = require("./routes/auth");
-
 const errorController = require("./controllers/error");
-const mongoose = require("mongoose");
 const User = require("./models/user");
 
 const MONGODB_URI =
-  "mongodb+srv://user1:mongo@cluster1.orslq.mongodb.net/node_complete_guide?retryWrites=true&w=majority";
+  "mongodb+srv://user1:mongo@cluster1.orslq.mongodb.net/node_complete_guide";
 
 const app = express();
 const store = new MongoDBStore({
@@ -24,6 +21,10 @@ const store = new MongoDBStore({
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+const authRoutes = require("./routes/auth");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
@@ -31,7 +32,7 @@ app.use(
     secret: "my secret",
     resave: false,
     saveUninitialized: false,
-    store: store,
+    store: store
   })
 );
 
