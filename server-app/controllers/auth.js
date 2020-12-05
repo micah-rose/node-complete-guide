@@ -9,7 +9,7 @@ const isLoggedIn = req.get('Cookie')
   });
 };
 
-  exports.postLogin = (req, res, next) => {
-    res.setHeader('Set-Cookie', 'loggedIn=true');
+exports.postLogin = (req, res, next) => {
+    res.setHeader('Set-Cookie', 'loggedIn=true; HttpOnly');
     res.redirect('/');
 };
