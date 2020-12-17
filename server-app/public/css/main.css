@@ -115,7 +115,7 @@ form {
 .mobile-nav__item a:active,
 .mobile-nav__item a:hover,
 .mobile-nav__item a.active {
-  background: #00695c;
+  background: indigo;
   color: white;
   border-radius: 3px;
 }
