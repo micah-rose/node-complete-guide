@@ -73,29 +73,7 @@ exports.postLogin = (req, res, next) => {
 
   User.findOne({ email: email })
     .then((user) => {
-    if (!user) {
-      return res.status(422).render("auth/login", {
-        path: "/login",
-        pageTitle: "Login",
-        errorMessage: "Invalid email or password.",
-        oldInput: {
-          email: email,
-          password: password,
-        },
-        validationErrors: [],
-      });
-    }
-    bcrypt
-      .compare(password, user.password)
-      .then((doMatch) => {
-        if (doMatch) {
-          req.session.isLoggedIn = true;
-          req.session.user = user;
-          return req.session.save((err) => {
-            console.log(err);
-            res.redirect("/");
-          });
-        }
+      if (!user) {
         return res.status(422).render("auth/login", {
           path: "/login",
           pageTitle: "Login",
@@ -106,13 +84,35 @@ exports.postLogin = (req, res, next) => {
           },
           validationErrors: [],
         });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.redirect("/login");
-      });
-  })
-  .catch(err => console.log(err));
+      }
+      bcrypt
+        .compare(password, user.password)
+        .then((doMatch) => {
+          if (doMatch) {
+            req.session.isLoggedIn = true;
+            req.session.user = user;
+            return req.session.save((err) => {
+              console.log(err);
+              res.redirect("/");
+            });
+          }
+          return res.status(422).render("auth/login", {
+            path: "/login",
+            pageTitle: "Login",
+            errorMessage: "Invalid email or password.",
+            oldInput: {
+              email: email,
+              password: password,
+            },
+            validationErrors: [],
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.redirect("/login");
+        });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.postSignup = (req, res, next) => {
