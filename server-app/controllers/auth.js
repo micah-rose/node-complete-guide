@@ -70,7 +70,9 @@ exports.postLogin = (req, res, next) => {
       validationErrors: errors.array(),
     });
   }
-  User.findOne({ email: email }).then((user) => {
+
+  User.findOne({ email: email })
+    .then((user) => {
     if (!user) {
       return res.status(422).render("auth/login", {
         path: "/login",
