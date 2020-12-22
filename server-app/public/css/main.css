@@ -204,6 +204,10 @@ form {
   outline-color: indigo;
 }
 
+.form-control input.invalid {
+  border-color: red;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
