@@ -204,7 +204,8 @@ form {
   outline-color: indigo;
 }
 
-.form-control input.invalid {
+.form-control input.invalid,
+.form-control textarea.invalid {
   border-color: red;
 }
 
