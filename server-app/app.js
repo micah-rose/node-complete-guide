@@ -25,8 +25,8 @@ const csrfProtection = csrf();
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     let path = './server-app/images'
-    cb(null, path) //this folder is being created in the entire folder structure 
-  },                  //and not just the server-app. This may be why the images are not serving.
+    cb(null, path)
+  },                  
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString().replace(/:/g, '-') + '-' +file.originalname)
   } 
@@ -49,7 +49,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(multer({storage: fileStorage, fileFilter}).single('image'));
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/images', express.static(path.join(__dirname, "images")));
+app.use('/server-app/images', express.static(path.join(__dirname, "images")));
 
 app.use(
   session({
