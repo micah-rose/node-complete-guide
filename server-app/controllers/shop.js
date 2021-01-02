@@ -151,16 +151,12 @@ exports.getOrders = (req, res, next) => {
 
 exports.getInvoice = (req, res, next) => {
   const orderId = req.params.orderId;
-  console.log(orderId);
   const invoiceName = 'INVOICE-' + orderId + '.pdf';
-  console.log(invoiceName);
-  const invoicePath = path.join('data', 'invoices', invoiceName);
-  console.log(invoicePath);
-
-  //OrderId shown in the browser - 5feffab32a090b1e5d55f8f3
+  const invoicePath = path.join('server-app', 'data', 'invoices', invoiceName);
 
   fs.readFile(invoicePath, (err, data) => {
     if (err) {
+      console.log(err);
       return next(err);
     }
     res.send(data);
