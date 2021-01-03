@@ -157,7 +157,7 @@ exports.getInvoice = (req, res, next) => {
     }
     if (order.user.useId.toString() !== req.user._id.toString()){
       return next(new Error('Unauthorized!'));
-    }
+    } else {
     const invoiceName = 'INVOICE-' + orderId + '.pdf';
     const invoicePath = path.join('server-app', 'data', 'invoices', invoiceName);
   
@@ -170,5 +170,6 @@ exports.getInvoice = (req, res, next) => {
       res.setHeader('Content-Disposition', 'inline; filename="' + invoiceName +'"');
       res.send(data);
     });
+  }
   }).catch(err => next(err))
 }
