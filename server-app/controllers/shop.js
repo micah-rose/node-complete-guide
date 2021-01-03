@@ -155,7 +155,7 @@ exports.getInvoice = (req, res, next) => {
     if (!order) {
       return next(new Error('No order found!'));
     }
-    if (order.user.useId.toString() !== req.user._id.toString()){
+    if (order.user.userId.toString() !== req.user._id.toString()){
       return next(new Error('Unauthorized!'));
     } else {
     const invoiceName = 'INVOICE-' + orderId + '.pdf';
@@ -171,5 +171,5 @@ exports.getInvoice = (req, res, next) => {
       res.send(data);
     });
   }
-  }).catch(err => next(err))
+  }).catch(err => console.log(err))
 }
