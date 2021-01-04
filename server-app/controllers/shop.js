@@ -161,11 +161,14 @@ exports.getInvoice = (req, res, next) => {
     } else {
     const invoiceName = 'INVOICE-' + orderId + '.pdf';
     const invoicePath = path.join('server-app', 'data', 'invoices', invoiceName);
-  
-    const file = fs.createReadStream(invoicePath);
+
+    const pdfDoc = new PDFDocument();
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'inline; filename="' + invoiceName +'"');
-    file.pipe(res);
+    pdfDoc.pipe(fs.createWriteStream(invoicePath));
+    pdfDoc.pipe(res);
+    pdfDoc.text('Hello World');
+    pdfDoc.end();
   }
   }).catch(err => console.log(err))
 }
