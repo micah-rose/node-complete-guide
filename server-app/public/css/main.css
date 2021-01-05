@@ -351,3 +351,22 @@ form {
   background: rgb(255, 176, 176);
   color: red;
 }
+
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: indigo;
+  padding: 0.5rem;
+  border: 1px solid indigo;
+  margin: 0 1rem;
+}
+
+.pagination a:hover,
+.pagination a:active {
+  background: indigo;
+  color: white;
+}
