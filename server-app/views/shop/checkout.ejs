@@ -16,13 +16,17 @@
       <h2>Total: $<%= totalSum %></h2>
     </div>
     <div class="centered">
-      <button id="order-btn" class="btn" onclick="orderPlaced()">Place Your Order</button> 
+      <form action="/checkout/success" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="btn">Order Now</button>
+      </form>
+      <!-- <button id="order-btn" class="btn" onclick="orderPlaced()">Place Your Order</button>  -->
     </div>
-    <script>
+    <!-- <script>
       function orderPlaced() {
         alert('Your order has been placed!');
       }
-    </script>
+    </script> -->
   </main>
   
   <%- include('../includes/end.ejs') %>
